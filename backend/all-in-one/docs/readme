@@ -1,0 +1,46 @@
+生成Qrcode
+    server{
+        listen 805;
+        location /qrcode_customers {
+        content_by_lua_block {
+            local qr = require("qrencode")
+            local args = ngx.req.get_uri_args()
+            local text = args.text
+
+            if text == nil or text== "" then
+                ngx.say('need a text param')
+                ngx.exit(404)
+            end
+
+            ngx.say(qr {
+                    -- 注释
+                    text=ngx.var.scheme..'://'..ngx.var.host..':'..ngx.var.server_port..'/h5/home?tab=customer&shop_id=1',
+                    level="L",
+                    kanji=false,
+                    ansi=false,
+                    size=6,
+                    margin=1,
+                    symversion=0,
+                    dpi=78,
+                    casesensitive=true,
+                    foreground="000000",
+                    background="FFFFFF"
+            })
+        }
+
+        default_type image/png;
+        add_header Expires "Fri, 01 Jan 1980 00:00:00 GMT";
+        add_header Pragma "no-cache";
+        add_header Cache-Control "no-cache, max-age=0, must-revalidate";
+     }}
+
+
+
+1. 上传图片（/prod/images/shop/<id>.jpg）
+
+uploadImageFolder: /prod/images/
+dbUrl: http://localhost/shop/images/1.jpg
+nginx match: /images/
+local: /prod/    ---> /prod/images/1.jpg
+
+
