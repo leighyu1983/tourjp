@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"services"
 	"entities"
-	"gopkg.in/gin-gonic/gin.v1"
+	"github.com/gin-gonic/gin"
 	"fmt"
 )
 

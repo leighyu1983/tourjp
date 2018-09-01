@@ -5,7 +5,7 @@ import (
     "runtime/debug"
 	"time"
     "fmt"
-    "gopkg.in/gin-gonic/gin.v1"
+    "github.com/gin-gonic/gin"
 )
 
 

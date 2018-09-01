@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"services"
 	"entities"
-	"gopkg.in/gin-gonic/gin.v1"
+	"github.com/gin-gonic/gin"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ func CreateDishJP(c *gin.Context) {
 	
 	//fmt.Printf("[controllers.CreateDishJP] ----- %s\n", dishJson)
 	id := services.CreateDishJP(&dishJson)
-	idJson := fmt.Sprintf("{'id':'%s'}", id)
+	idJson := fmt.Sprintf("{\"id\":\"%s\"}", id)
 	c.JSON(http.StatusOK, gin.H{"code": 1, "data": idJson, "message": nil})
 }
 

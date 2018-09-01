@@ -63,19 +63,19 @@ func GetSetById(setId string) entities.SetJsonOut {
 
 func CreateSetJP(setj *entities.SetJsonIn) (string) {
 	uid, _ := uuid.NewV4()
-	id := fmt.Sprintf("%s", uid)
+	setj.Id = fmt.Sprintf("%s", uid)
 
 	set := entities.SetDB{}
-	set.Id = fmt.Sprintf("%s", uid)
+	set.Id = setj.Id
 	set.Code = setj.Code
 	set.JpName = setj.JpName
 	set.JpDescription = setj.JpDescription
 	set.Dishes = strings.Join(setj.Dishes, ",")
 
 	insertStr := "insert into sets(shop_id, id, code, jp_name, jp_description, dishes) values(?,?,?,?,?,?)" ;
-	daos.InsertUpdate(insertStr, 1, id, set.Code, set.JpName, set.JpDescription, set.Dishes);
+	daos.InsertUpdate(insertStr, 1, setj.Id, set.Code, set.JpName, set.JpDescription, set.Dishes);
 
-	return id
+	return setj.Id
 }
 
 
