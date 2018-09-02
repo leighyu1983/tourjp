@@ -1,8 +1,8 @@
 mysqlurl: root:123456@tcp(mysql7:3306)/tour_jp?charset=utf8
 mysqlmaxconnection: 20
-imageurlshop: /images/
-imageurlset: /images/
-imageurldish: /images/
+imageurlshop: /imagesviews/
+imageurlset: /imagesviews/
+imageurldish: /imagesviews/
 imagefolder: /self/prod/aaa/
 urlh5employee: http://localhost:805/h5/home/tab=employee&shop_id=1
 urlh5boss: http://localhost:805/h5/

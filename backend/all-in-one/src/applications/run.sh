@@ -12,6 +12,9 @@ docker rm tourjpn
 echo "...remove image tourjprun..."
 docker rmi tourjprun
 
+echo "...copy config file..."
+cp ../utils/config.yaml ./
+
 echo "...set linux temp env..."
 CGO_ENABLED=0 GOOS=linux 
 
@@ -22,7 +25,7 @@ echo "...building docker image..."
 docker build -t tourjprun:latest .
 
 echo "...start docker..."
-docker run -itd -p 805:805 -v /self/prod/images:/self/prod/aaa  --name tourjpn --network=yuyang_nw  tourjprun:latest
+docker run -itd -p 805:805 -v /self/prod/imagesviews:/self/prod/aaa  --name tourjpn --network=yuyang_nw  tourjprun:latest
 
 echo "...done..."
 

@@ -57,5 +57,6 @@ mysql 授权grant
 在main.go的同级目录下 运行golang在docker环境中运行的参数
 docker 安装golang scratch + 网络 + 挂载目录(不是workdir)
 
+编写run.sh  # 自动化构建工具
 
 
