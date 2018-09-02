@@ -100,7 +100,7 @@ func UploadDishImage(file multipart.File, filename string, id string) error {
 	}
 
 	updateStr := "update dishes set image_url=? where shop_id=1 and id=?";
-	daos.InsertUpdate(updateStr, config.ImageUrlShop + id + "_" + filename, id)
+	daos.InsertUpdate(updateStr, config.ImageUrlDish + id + ".jpg", id)
 
 	return err
 }

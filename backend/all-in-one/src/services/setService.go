@@ -100,7 +100,7 @@ func UploadSetImage(file multipart.File, filename string, id string) error {
 	}
 
 	updateStr := "update sets set image_url=? where shop_id=1 and id=?";
-	daos.InsertUpdate(updateStr, config.ImageFolder + id + "_" + filename, id)
+	daos.InsertUpdate(updateStr, config.ImageUrlSet + id + ".jpg", id)
 
 	return err
 }
