@@ -46,12 +46,12 @@ func UploadShopImage(file multipart.File, id string) error {
 	config, err = util.GetConfig();
 	
 	if(err != nil) {
-		return err
+		panic(err)
 	}
 
 	err = util.SaveFile(file, config.ImageFolder, "1.jpg")
 	if(err != nil) {
-		return err
+		panic(err)
 	}
 
 	updateStr := "update shops set image_url=? where id=?";

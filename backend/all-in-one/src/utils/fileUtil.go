@@ -4,7 +4,7 @@ import (
 	"mime/multipart"
 	"io"
 	"os"
-	//"fmt"
+	"fmt"
 )
 
 func PathExists(path string) (bool, error) {
@@ -35,13 +35,14 @@ func SaveFile(file multipart.File, path string, filename string) (error){
 	out, _ := os.Create(path + filename);
 	defer out.Close()
 
+	fmt.Printf("[util.SaveFile] prepare to write into file '%s'\n", path + filename)
 	_, err = io.Copy(out, file)
     if err != nil {
 		//fmt.Println("=====ccccccccccccc=====" + path)
 		//fmt.Println(fmt.Printf("%s", err))
 		//fmt.Println("=====dddddddddddd=====" + path)
-        return err
+		panic(err)
 	}
-	
+	fmt.Printf("[util.SaveFile] successfully write into file '%s'\n", path + filename)
 	return nil
 }

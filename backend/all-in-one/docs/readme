@@ -45,9 +45,13 @@ local: /prod/    ---> /prod/images/1.jpg
 
 
 #################   Installation Guide   #################
+install git
+上传git pub_key 到GitHub
+git clone
 docker 创建网络
 docker 安装mysql + 网络
 mysql 授权grant
+
 配置文件修改数据库的ip地址为mysql 容器名
 配置文件要放到main.go的同级目录下, 要一同打包入dockerfile
 在main.go的同级目录下 运行golang在docker环境中运行的参数
