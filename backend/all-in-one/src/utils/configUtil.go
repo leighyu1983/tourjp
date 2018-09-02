@@ -9,7 +9,7 @@ import(
 )
 
 func GetConfig()(entities.ConfigEntity, error) {
-	data, err := ioutil.ReadFile("../resources/config.yaml")
+	data, err := ioutil.ReadFile("./config.yaml")
 	fmt.Println("===configuration data:\n" + string(data))
 	
 	config := entities.ConfigEntity{}
