@@ -17,7 +17,7 @@ return: http://192.168.121.2:8080
 */
 func GetIpPort(requestUrl string, requestHome string) (string) {
 	index := strings.Index(requestUrl, requestHome)
-	return Substr2(requestUrl, 0, index -1)
+	return Substr2(requestUrl, 0, index)
 }
 
 
