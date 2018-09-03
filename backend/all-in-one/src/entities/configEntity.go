@@ -15,7 +15,10 @@ type ConfigEntity struct {
     UrlH5Employee string
     UrlH5Boss string
     UrlH5Customer string
-    
+    // qrcode image name
+    QrImgNameWeb string
+    QrImgNameCustomer string
+    QrImgNameEmployee string
 }
 
 

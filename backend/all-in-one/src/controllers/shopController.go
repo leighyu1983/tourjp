@@ -21,11 +21,20 @@ func CreateShop(c *gin.Context) {
 		return
    }
    
+   config, err := util.GetConfig();
+   if err != nil {
+		fmt.Printf("[controllers.GetShopById] err %s\n", err)
+		c.JSON(200, gin.H{"code": 0, "data": "", "message": err})
+		return
+	}
+
    fmt.Printf("[controllers.CreateShop] --referer--- %s\n", c.Request.Header.Get("Referer"))
-   head := util.GetIpPort(c.Request.Header.Get("Referer"), "ub/index.html")
-   fmt.Printf("[controllers.CreateShop] --http head--- %s\n", head)
+   headUrl := util.GetIpPort(c.Request.Header.Get("Referer"), config.UrlH5Boss)
 
    services.CreateShop(&shopJson)
+   fmt.Printf("[controllers.CreateShop] --shop url inside qrcode--- %s\n", headUrl + config.UrlH5Boss + config.QrImgNameWeb)
+   util.GenerateQrImg(headUrl + config.UrlH5Boss + config.QrImgNameWeb, config.ImageFolder, config.QrImgNameWeb)
+
    fmt.Printf("[controllers.CreateShop] ----- %s\n", shopJson)
    c.JSON(http.StatusOK, gin.H{"code": 1, "data": shopJson, "message": nil})
 }

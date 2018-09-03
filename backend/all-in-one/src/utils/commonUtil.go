@@ -2,6 +2,11 @@ package util
 
 import(
 	"strings"
+	"image/png"
+    "os"
+
+    "github.com/boombuler/barcode"
+    "github.com/boombuler/barcode/qr"
 )
 
 
@@ -32,3 +37,15 @@ func Substr2(str string, start int, end int) string {
 	return string(rs[start:end])
 }
 
+func GenerateQrImg(url string, path string, imgName string) {
+	CreatePathIfNotExist(path)
+
+    qrCode, _ := qr.Encode(url, qr.M, qr.Auto)
+
+    qrCode, _ = barcode.Scale(qrCode, 256, 256)
+
+    file, _ := os.Create(path + imgName)
+    defer file.Close()
+
+    png.Encode(file, qrCode)
+}
