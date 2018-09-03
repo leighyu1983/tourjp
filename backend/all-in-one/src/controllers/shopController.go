@@ -30,10 +30,12 @@ func CreateShop(c *gin.Context) {
 
    fmt.Printf("[controllers.CreateShop] --referer--- %s\n", c.Request.Header.Get("Referer"))
    headUrl := util.GetIpPort(c.Request.Header.Get("Referer"), config.UrlH5Boss)
-
-   services.CreateShop(&shopJson)
+   
    fmt.Printf("[controllers.CreateShop] --shop url inside qrcode--- %s\n", headUrl + config.UrlH5Boss + config.QrImgNameWeb)
    util.GenerateQrImg(headUrl + config.UrlH5Boss + config.QrImgNameWeb, config.ImageFolder, config.QrImgNameWeb)
+
+   services.CreateShop(&shopJson)
+
 
    fmt.Printf("[controllers.CreateShop] ----- %s\n", shopJson)
    c.JSON(http.StatusOK, gin.H{"code": 1, "data": shopJson, "message": nil})
