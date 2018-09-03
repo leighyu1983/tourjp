@@ -6,6 +6,7 @@ import (
 	"entities"
 	"github.com/gin-gonic/gin"
 	"fmt"
+	"utils"
 )
 
 
@@ -21,8 +22,8 @@ func CreateShop(c *gin.Context) {
    }
    
    fmt.Printf("[controllers.CreateShop] --referer--- %s\n", c.Request.Header.Get("Referer"))
-   fmt.Printf("[controllers.CreateShop] --real ip--- %s\n", c.Request.Header.Get("X-Real-IP"))
-   fmt.Printf("[controllers.CreateShop] --fowarded --- %s\n", c.Request.Header.Get("X-Forwarded-For"))
+   head := util.GetIpPort(c.Request.Header.Get("Referer"), "index.html")
+   fmt.Printf("[controllers.CreateShop] --http head--- %s\n", head)
 
    services.CreateShop(&shopJson)
    fmt.Printf("[controllers.CreateShop] ----- %s\n", shopJson)
