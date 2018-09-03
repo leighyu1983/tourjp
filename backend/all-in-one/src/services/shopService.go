@@ -55,6 +55,7 @@ func UploadShopImage(file multipart.File, id string) error {
 	}
 
 	updateStr := "update shops set image_url=? where id=?";
+	fmt.Printf("[UploadShopImage] --updateStr-->'%s' --image-->'%s'", updateStr, config.ImageUrlShop + id + ".jpg")
 	daos.InsertUpdate(updateStr, config.ImageUrlShop + id + ".jpg", id)
 
 	return err
