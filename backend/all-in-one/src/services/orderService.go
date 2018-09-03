@@ -17,16 +17,15 @@ func GetAllOrders() []entities.OrderJson {
         panic("[services.GetAllOrders] query error:" + queryStr)
     }
 
-	order := entities.OrderDB{}
-    data := util.GetObjs(&order, *arr) 	
-	fmt.Println(data)
-	r := make([]entities.OrderJson, len(data))
-	for i, item := range data {
-		p, _ := item.(*entities.OrderDB)
+	r := make([]entities.OrderJson, len(*arr))
+	for i, item := range *arr {
+		order := entities.OrderDB{}
+    	util.GetObjSingle(&order, item) 	
+		fmt.Println(order)
 		
 		oj := entities.OrderJson{}
-		oj.CreatedOn = p.CreatedOn
-		oj.SeatNo = p.SeatNo
+		oj.CreatedOn = order.CreatedOn
+		oj.SeatNo = order.SeatNo
 		r[i] = oj
 	}
 
