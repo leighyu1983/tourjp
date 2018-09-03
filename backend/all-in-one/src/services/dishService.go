@@ -94,7 +94,7 @@ func UploadDishImage(file multipart.File, filename string, id string) error {
 		return err
 	}
 
-	err = util.SaveFile(file, config.ImageFolder, id + filename)
+	err = util.SaveFile(file, config.ImageFolder, id)
 	if(err != nil) {
 		return err
 	}
