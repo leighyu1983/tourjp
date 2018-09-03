@@ -34,7 +34,7 @@ func CreateOrder(c *gin.Context) {
 	headUrl := util.GetIpPort(c.Request.Header.Get("Referer"), config.UrlH5Customer)
 	
 	fmt.Printf("[controllers.CreateOrder] --customer url inside qrcode--- %s\n", headUrl + config.UrlH5Customer)
-	util.GenerateQrImg(headUrl + config.UrlH5Employee, config.ImageFolder, config.QrImgNameEmployee)
+	util.GenerateQrImg(headUrl + config.UrlH5Employee + "?seat_no=" + orderJ.SeatNo, config.ImageFolder, config.QrImgNameEmployee)
 
 	c.JSON(http.StatusOK, gin.H{"code": 1, "data": "", "message": nil})
 }

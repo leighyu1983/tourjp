@@ -34,7 +34,7 @@ func CreateShop(c *gin.Context) {
    
    // 生成老板访问
    fmt.Printf("[controllers.CreateShop] --shop url inside qrcode--- %s\n", headUrl + config.UrlH5Boss)
-   util.GenerateQrImg(headUrl + config.UrlH5Boss, config.ImageFolder, config.QrImgNameWeb)
+   util.GenerateQrImg(headUrl + config.UrlH5Employee, config.ImageFolder, config.QrImgNameWeb)
 
    // 生成客户访问
    fmt.Printf("[controllers.CreateShop] --customer visit url inside qrcode--- %s\n", headUrl + config.UrlH5Customer)
