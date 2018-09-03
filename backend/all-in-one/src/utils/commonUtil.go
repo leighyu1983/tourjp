@@ -4,7 +4,6 @@ import(
 	"strings"
 	"image/png"
     "os"
-
     "github.com/boombuler/barcode"
     "github.com/boombuler/barcode/qr"
 )
