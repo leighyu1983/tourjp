@@ -20,6 +20,7 @@ func CreateShop(c *gin.Context) {
 		return
    }
 
+   fmt.Printf("[controllers.CreateShop] --referer--- %s\n", c.GetHeader("Referer"))
    services.CreateShop(&shopJson)
    fmt.Printf("[controllers.CreateShop] ----- %s\n", shopJson)
    c.JSON(http.StatusOK, gin.H{"code": 1, "data": shopJson, "message": nil})
