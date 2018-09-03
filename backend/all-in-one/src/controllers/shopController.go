@@ -28,12 +28,19 @@ func CreateShop(c *gin.Context) {
 		return
 	}
 
+   // 获取http://ip:port/地址
    fmt.Printf("[controllers.CreateShop] --referer--- %s\n", c.Request.Header.Get("Referer"))
    headUrl := util.GetIpPort(c.Request.Header.Get("Referer"), config.UrlH5Boss)
    
+   // 生成老板访问
    fmt.Printf("[controllers.CreateShop] --shop url inside qrcode--- %s\n", headUrl + config.UrlH5Boss)
    util.GenerateQrImg(headUrl + config.UrlH5Boss, config.ImageFolder, config.QrImgNameWeb)
 
+   // 生成客户访问
+   fmt.Printf("[controllers.CreateShop] --customer visit url inside qrcode--- %s\n", headUrl + config.UrlH5Customer)
+   util.GenerateQrImg(headUrl + config.UrlH5Customer, config.ImageFolder, config.QrImgNameCustomer)
+
+   // 保存数据入库
    services.CreateShop(&shopJson)
 
 
