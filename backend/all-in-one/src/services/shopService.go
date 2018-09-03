@@ -35,8 +35,9 @@ func CreateShop(shop *entities.Shop) {
 	//uid, _ := uuid.NewV4()
 	//shop.Id = fmt.Sprintf("%s", uid)
 
-	insertStr := "insert into shops(id,cn_name,cn_description,jp_name,jp_description) values(?,?,?,?,?)";
-    daos.InsertUpdate(insertStr, shop.Id, shop.CnName, shop.CnDescription,shop.JpName, shop.JpDescription);
+	//insertStr := "insert into shops(id,cn_name,cn_description,jp_name,jp_description) values(?,?,?,?,?)";
+	insertStr := "update shops set cn_name=?,cn_description=?,jp_name=?,jp_description =? where id=?";
+    daos.InsertUpdate(insertStr, shop.CnName, shop.CnDescription,shop.JpName, shop.JpDescription, shop.Id);
 }
 
 
