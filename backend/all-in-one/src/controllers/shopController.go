@@ -22,7 +22,7 @@ func CreateShop(c *gin.Context) {
    }
    
    fmt.Printf("[controllers.CreateShop] --referer--- %s\n", c.Request.Header.Get("Referer"))
-   head := util.GetIpPort(c.Request.Header.Get("Referer"), "index.html")
+   head := util.GetIpPort(c.Request.Header.Get("Referer"), "ub/index.html")
    fmt.Printf("[controllers.CreateShop] --http head--- %s\n", head)
 
    services.CreateShop(&shopJson)
