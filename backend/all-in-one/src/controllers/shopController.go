@@ -19,8 +19,11 @@ func CreateShop(c *gin.Context) {
 		c.JSON(200, gin.H{"code": 0, "data": "", "message": err})
 		return
    }
+   
+   fmt.Printf("[controllers.CreateShop] --referer--- %s\n", c.Request.Header.Get("Referer"))
+   fmt.Printf("[controllers.CreateShop] --real ip--- %s\n", c.Request.Header.Get("X-Real-IP"))
+   fmt.Printf("[controllers.CreateShop] --fowarded --- %s\n", c.Request.Header.Get("X-Forwarded-For"))
 
-   fmt.Printf("[controllers.CreateShop] --referer--- %s\n", c.GetHeader("Referer"))
    services.CreateShop(&shopJson)
    fmt.Printf("[controllers.CreateShop] ----- %s\n", shopJson)
    c.JSON(http.StatusOK, gin.H{"code": 1, "data": shopJson, "message": nil})
